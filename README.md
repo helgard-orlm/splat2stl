@@ -4,6 +4,8 @@ Turn a 3D Gaussian Splat (`.ply`) of a single object into a **watertight, printa
 
 Image-to-3D generators such as [Idol](https://huggingface.co/speridlabs/idol) and [TripoSplat](https://github.com/VAST-AI-Research/TripoSplat) output Gaussian splats, not meshes. splat2stl renders the splat from many directions with a small pure-PyTorch rasterizer, takes the object's outline in every view, and carves a voxel block down to the shape that matches all outlines (a *visual hull*). The result is a closed solid that you can drop into a slicer.
 
+Write-up of how we got here (four failed attempts and why): [I wanted to 3D-print a fox an AI made from one picture. The fix was to stop looking for its surface](https://dev.to/helgard_orlm/i-wanted-to-3d-print-a-fox-an-ai-made-from-one-picture-the-fix-was-to-stop-looking-for-its-surface-1i18) (dev.to).
+
 ![results](docs/results.png)
 
 *Each triple shows the splat rendered by splat2stl, the STL (gray), and the colored OBJ, from the same angle. Eleven objects were generated with Idol and `ship_triposplat` with TripoSplat. All 12 meshes are watertight (trimesh `is_watertight`).*
